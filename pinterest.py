@@ -962,10 +962,11 @@ def instagram_follow():
                     driver.find_element(By.CSS_SELECTOR, '[alt="Click On The Button To Confirm Interaction!"]').click()
                     
                     if con_follows == con_follows_stop:
-                        time.sleep(random.randrange(50,200))
+                        
                         break
                     con_follows_stop +=1
                     #time.sleep(random.randrange(80, 200))
+                    time.sleep(random.randrange(50,200))
                 except:
                     
                     try:
