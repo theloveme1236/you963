@@ -922,9 +922,11 @@ def instagram_follow():
     except:
         print('add_list')
     driver.get("https://www.like4like.org/user/earn-instagram-follow.php")
+    time.sleep(5)
+    driver.execute_script("window.scrollTo(0, document.body.scrollHeight/2);")
     con_follows = random.randrange(1,5)
-    con_follows_stop = 1
-    for s in range(10):
+    con_follows_stop = 0
+    for s in range(15):
         try:
 
             if stop_def_instagram_follow == 'stop':
@@ -962,6 +964,7 @@ def instagram_follow():
                     if con_follows == con_follows_stop:
                         time.sleep(random.randrange(50,200))
                         break
+                    con_follows_stop +=1
                     #time.sleep(random.randrange(80, 200))
                 except:
                     
