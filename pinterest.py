@@ -910,6 +910,17 @@ def instagram_follow_erro():
 
     if current_url == 'https://www.like4like.org/user/bonus-page.php' or  current_url == 'https://www.like4like.org/user/bonus-page.php/':
         print('erro_https://www.like4like.org/user/bonus-page.php')
+        ##result > div > a:nth-child(8)
+        ##result > div > a:nth-child(6)
+        
+        for a in range(8):
+            rand = random.randrange(2,8)
+            print(a)
+            try:
+                driver.find_element(By.CSS_SELECTOR, "#result > div > a:nth-child({})".format(rand)).click()
+                break
+            except:
+                print('errobonus-page.php')
         input('erro_https://www.like4like.org/user/bonus-page.php')
 def instagram_follow():
     global driver
@@ -923,7 +934,8 @@ def instagram_follow():
         print('add_list')
     driver.get("https://www.like4like.org/user/earn-instagram-follow.php")
     time.sleep(5)
-    driver.execute_script("window.scrollTo(0, document.body.scrollHeight/2);")
+    page_height = driver.execute_script("return document.body.scrollHeight;")
+    driver.set_window_size(1920, page_height)
     con_follows = random.randrange(1,5)
     con_follows_stop = 0
     for s in range(15):
@@ -965,6 +977,7 @@ def instagram_follow():
                         
                         break
                     con_follows_stop +=1
+                    print('follows_{}'.format(con_follows_stop))
                     #time.sleep(random.randrange(80, 200))
                     time.sleep(random.randrange(50,200))
                 except:
@@ -981,6 +994,9 @@ def instagram_follow():
                         driver.switch_to.window(driver.window_handles[0])
                         time.sleep(2)
                         driver.get("https://www.like4like.org/user/earn-instagram-follow.php")
+                        time.sleep(5)
+                        page_height = driver.execute_script("return document.body.scrollHeight;")
+                        driver.set_window_size(1920, page_height)
                     except:
                         text_instgeram = driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div[2]/div/div/div/div[1]/div[1]/div[2]/section/main/div/div/div/span").text
                         print(text_instgeram)
@@ -1003,10 +1019,15 @@ def instagram_follow():
             check_driver_open()
             #no_Window_driver()
             driver.get("https://www.like4like.org/user/earn-instagram-follow.php")
+            time.sleep(5)
+            page_height = driver.execute_script("return document.body.scrollHeight;")
+            driver.set_window_size(1920, page_height)
 def instagram_like():
     global driver
     driver.get("https://www.like4like.org/user/earn-instagram-like.php")
-
+    time.sleep(5)
+    page_height = driver.execute_script("return document.body.scrollHeight;")
+    driver.set_window_size(1920, page_height)
     for s in range(3):
         try:
             if stop_def_instagram_like == 'stop':
@@ -1046,6 +1067,9 @@ def instagram_like():
             #no_Window_driver()
             driver.get("https://www.like4like.org/user/earn-instagram-like.php")
             instagram_follow_erro()
+            time.sleep(5)
+            page_height = driver.execute_script("return document.body.scrollHeight;")
+            driver.set_window_size(1920, page_height)
 open_browser()
 like4like_login_instgram()
 like3like_login_first()
